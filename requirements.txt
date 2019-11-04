@@ -1,0 +1,3 @@
+geopandas
+# dependency for plotting map
+descartes
