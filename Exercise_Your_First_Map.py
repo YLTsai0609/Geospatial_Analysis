@@ -33,6 +33,8 @@
 #
 # To get started, run the code cell below to set up our feedback system.
 
+# * [check your Kaggle Notebook](https://www.kaggle.com/ylt0609/exercise-your-first-map?scriptVersionId=22990589)
+
 # +
 import geopandas as gpd
 
