@@ -38,9 +38,19 @@
 # +
 import geopandas as gpd
 
-from learntools.core import binder
-binder.bind(globals())
-from learntools.geospatial.ex1 import *
+# from learntools.core import binder
+# binder.bind(globals())
+# from learntools.geospatial.ex1 import *
+# -
+
+import pandas as pd
+
+# +
+# dir(pd.DataFrame)
+# dir(gpd.GeoDataFrame)
+# [method for method
+#         in dir(gpd.GeoDataFrame)
+#         if method not in  dir(pd.DataFrame)]
 # -
 
 # ### 1) Get the data.
@@ -92,7 +102,9 @@ world.head()
 # Use the `world` and `world_loans` GeoDataFrames to visualize Kiva loan locations across the world.
 
 # Your code here
+# baseMap
 ax = world.plot(figsize=(20,20), color='whitesmoke', linestyle=':', edgecolor='black')
+# event
 world_loans.plot(ax=ax, markersize=2)
 # Uncomment to see a hint
 # q_2.hint()

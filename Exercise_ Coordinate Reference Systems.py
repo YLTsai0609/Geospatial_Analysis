@@ -345,11 +345,14 @@ land_protected_areas = protected_areas[protected_areas['MARINE'] != '2']
 birds_south = birds[birds.geometry.y < 0] # south side for all birds
 # map
 PROJECTION_CODE = 4326
-ax = south_america.to_crs(epsg=PROJECTION_CODE).plot(figsize=(8,8), color='whitesmoke', linestyle=':', edgecolor='black')
+ax = south_america.to_crs(epsg=PROJECTION_CODE).plot(figsize=(8,8), color='whitesmoke', 
+                                                     linestyle=':', edgecolor='black')
 # land_protected_area zorder for coverd by bird points
-land_protected_areas.to_crs(epsg=PROJECTION_CODE).plot(ax=ax, color='blue', alpha=.3, label='protected area',zorder=1)
+land_protected_areas.to_crs(epsg=PROJECTION_CODE).plot(ax=ax, color='blue', alpha=.3,
+                                                       label='protected area',zorder=1)
 # all the birds
-birds_south.to_crs(epsg=PROJECTION_CODE).plot(ax=ax, markersize=15, color='red', label='birds',zorder=2)
+birds_south.to_crs(epsg=PROJECTION_CODE).plot(ax=ax, markersize=15, color='red',
+                                              label='birds',zorder=2)
 plt.legend()
 
 # +
