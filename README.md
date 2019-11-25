@@ -63,3 +63,27 @@ TODO [use git to display the html page](https://www.finex.co/how-to-display-html
 
 <img src='./images/Geo_3.png'></img>
 <img src='./images/Geo_4.png'></img>
+
+### Interactive Map
+[Kaggle Notebook](https://www.kaggle.com/alexisbcook/interactive-maps)
+互動式的介面自己做EDA或是展示都相當方便，特別舉例地圖資料的話，還能夠當場互動選定地點(包含了解附近商圈關係，以及精確經緯度)，甚至也可以搭配上兩張提到的，即時反饋選定區域能夠帶來多少經濟效益，或是展店覆蓋度等
+package : `folium`
+利用下列function將結果embed在html中，backend想當然爾就是JavaScript
+```
+# Function for displaying the map
+def embed_map(m, file_name):
+    from IPython.display import IFrame
+    m.save(file_name)
+    return IFrame(file_name, width='100%', height='500px')
+```
+* PointPlot : `folium.Marker` : 放置地標點 : 地點展示
+* 缺點 : 點太密集時有效能問題，遇到這個情況時使用MarkerCluster
+基本上也不太適合太多點的展示，因為要用iterrows一個一個畫上去，只要使用DataFrame的經緯度即可，不需要GeoDataFrame的geometry，精確度最好可以在小數點下6位
+
+* PointPlot : `folium.ClusterMarker` : 太多點的時候使用，會加總附近有幾個點，zoom in時在切分開來，遠看和近看都能夠充分顯示資訊
+
+* PointPlot : `folium.Circle` : 圓點方式，比起Marker的優勢點在於，顏色、Circle大小是兩個可控制的Dimension，例如犯罪地點 9-12時標示為綠色，13-17標示為藍色
+
+* HeatMap : `folium.HeatMap` : 展示密度，你的點真的太多了，就用density吧，一目了然哪邊比較多人犯罪，哪邊比較多我們的商業目標等
+
+* HeatMap : `folium.Choroleth` : 同樣是HeatMap，但能夠針對特定區塊(例如國家，州，區，城市分塊展示)，優勢點在於能夠展示各州/各區索索擁有的資源等等，需要使用`GeoDataFrame`
