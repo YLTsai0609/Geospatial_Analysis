@@ -1,9 +1,5 @@
 # Geospatial Analysis 
-* 紀錄Kaggle Learning的Geospatial Analysis課程，並且copy一份下來，就不會因為Kaggle learn收回課程而無從參考
-TODO [use git to display the html page](https://www.finex.co/how-to-display-html-in-github/)
 # Summary
-
-
 ### Proximity Analysis
 [Notebook on Kaggle](https://www.kaggle.com/ylt0609/exercise-proximity-analysis)
 * 鄰近點分析
@@ -80,10 +76,24 @@ def embed_map(m, file_name):
 * 缺點 : 點太密集時有效能問題，遇到這個情況時使用MarkerCluster
 基本上也不太適合太多點的展示，因為要用iterrows一個一個畫上去，只要使用DataFrame的經緯度即可，不需要GeoDataFrame的geometry，精確度最好可以在小數點下6位
 
+<img src='./images/Geo_5.png'></img>
+
 * PointPlot : `folium.ClusterMarker` : 太多點的時候使用，會加總附近有幾個點，zoom in時在切分開來，遠看和近看都能夠充分顯示資訊
+
+<img src='./images/Geo_6.png'></img>
 
 * PointPlot : `folium.Circle` : 圓點方式，比起Marker的優勢點在於，顏色、Circle大小是兩個可控制的Dimension，例如犯罪地點 9-12時標示為綠色，13-17標示為藍色
 
+<img src='./images/Geo_7.png'></img>
+
 * HeatMap : `folium.HeatMap` : 展示密度，你的點真的太多了，就用density吧，一目了然哪邊比較多人犯罪，哪邊比較多我們的商業目標等
 
+<img src='./images/Geo_8.png'></img>
+
 * HeatMap : `folium.Choroleth` : 同樣是HeatMap，但能夠針對特定區塊(例如國家，州，區，城市分塊展示)，優勢點在於能夠展示各州/各區索索擁有的資源等等，需要使用`GeoDataFrame`
+
+
+<img src='./images/Geo_9.png'></img>
+
+* 紀錄Kaggle Learning的Geospatial Analysis課程，並且copy一份下來，就不會因為Kaggle learn收回課程而無從參考
+TODO [use git to display the html page](https://www.finex.co/how-to-display-html-in-github/)
